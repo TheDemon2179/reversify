@@ -1,0 +1,210 @@
+/* --- CSS Переменные для тем --- */
+:root {
+	--bg-color: #f4f7f9;
+	--card-bg-color: #ffffff;
+	--text-color: #2c3e50;
+	--primary-color: #3498db;
+	--primary-text-color: #ffffff;
+	--border-color: #dfe6e9;
+	--input-bg-color: #ecf0f1;
+	--shadow-color: rgba(0, 0, 0, 0.05);
+}
+
+[data-theme='dark'] {
+	--bg-color: #2c3e50;
+	--card-bg-color: #34495e;
+	--text-color: #ecf0f1;
+	--primary-color: #3498db;
+	--primary-text-color: #ffffff;
+	--border-color: #4a6278;
+	--input-bg-color: #2c3e50;
+	--shadow-color: rgba(0, 0, 0, 0.2);
+}
+
+/* --- Общие стили --- */
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-family: 'Inter', sans-serif;
+	background-color: var(--bg-color);
+	color: var(--text-color);
+	transition: background-color 0.3s, color 0.3s;
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	min-height: 100vh;
+	padding: 20px;
+}
+
+.container {
+	width: 100%;
+	max-width: 700px;
+}
+
+.header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 20px;
+}
+
+h1 {
+	font-size: 2.5rem;
+	font-weight: 700;
+}
+
+#theme-switcher {
+	background: none;
+	border: none;
+	font-size: 1.8rem;
+	cursor: pointer;
+	transition: transform 0.3s;
+}
+#theme-switcher:hover {
+	transform: scale(1.1) rotate(15deg);
+}
+
+/* --- Карточка с формой --- */
+.card {
+	background-color: var(--card-bg-color);
+	padding: 25px;
+	border-radius: 12px;
+	box-shadow: 0 10px 25px var(--shadow-color);
+	transition: background-color 0.3s;
+}
+
+.form-group {
+	margin-bottom: 20px;
+}
+
+label {
+	display: block;
+	margin-bottom: 8px;
+	font-weight: 500;
+	font-size: 0.9rem;
+}
+
+input[type='text'],
+input[type='number'],
+select,
+textarea {
+	width: 100%;
+	padding: 12px;
+	border: 1px solid var(--border-color);
+	border-radius: 8px;
+	background-color: var(--input-bg-color);
+	color: var(--text-color);
+	font-family: inherit;
+	font-size: 1rem;
+	transition: border-color 0.3s, background-color 0.3s;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+	outline: none;
+	border-color: var(--primary-color);
+	box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+}
+
+/* --- Стили для группы XOR ключа --- */
+.xor-key-group {
+	display: flex;
+	gap: 10px;
+}
+.xor-key-group input {
+	flex-grow: 1;
+}
+.xor-key-group select {
+	flex-grow: 0;
+	flex-shrink: 0;
+	width: auto;
+}
+
+select:disabled {
+	opacity: 0.6;
+	cursor: not-allowed;
+	background-color: var(--bg-color);
+}
+
+textarea {
+	resize: vertical;
+}
+
+#output-text {
+	background-color: var(--bg-color);
+	cursor: not-allowed;
+}
+
+/* --- Кнопки --- */
+.actions {
+	display: flex;
+	gap: 15px;
+	margin-bottom: 20px;
+}
+
+.btn {
+	flex-grow: 1;
+	padding: 12px 15px;
+	border: 1px solid var(--primary-color);
+	border-radius: 8px;
+	font-size: 1rem;
+	font-weight: 500;
+	cursor: pointer;
+	transition: all 0.2s ease-in-out;
+	background-color: var(--card-bg-color);
+	color: var(--primary-color);
+}
+
+.btn.btn-primary {
+	background-color: var(--primary-color);
+	color: var(--primary-text-color);
+}
+
+.btn:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 4px 10px rgba(52, 152, 219, 0.2);
+}
+
+.btn.btn-primary:hover {
+	opacity: 0.9;
+}
+
+.footer {
+	text-align: center;
+	margin-top: 30px;
+	color: #7f8c8d;
+	font-size: 1.9rem;
+}
+
+/* --- Утилиты --- */
+.hidden {
+	display: none !important;
+}
+
+/* --- Адаптивность --- */
+@media (max-width: 600px) {
+	body {
+		padding: 10px;
+	}
+
+	h1 {
+		font-size: 2rem;
+	}
+
+	.actions {
+		flex-direction: column;
+	}
+
+	.card {
+		padding: 20px;
+	}
+
+	.xor-key-group {
+		flex-direction: column;
+	}
+}
